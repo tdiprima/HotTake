@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Read(//Users/tdiprima/Documents/trabajo/AI/ghost-writer-py/**)"
-    ],
-    "deny": [],
-    "ask": []
-  }
-}
