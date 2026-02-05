@@ -1,6 +1,7 @@
 """
 Publishes generated articles as Markdown files.
 """
+
 import re
 
 

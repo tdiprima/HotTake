@@ -1,6 +1,7 @@
 """
 Generates SEO-optimized articles using OpenAI's API.
 """
+
 import json
 import os
 
@@ -22,7 +23,7 @@ def generate_article(topic):
     """
 
     response = client.chat.completions.create(
-        model="gpt-4o-mini", messages=[{"role": "user", "content": prompt}]
+        model="gpt-5.2", messages=[{"role": "user", "content": prompt}]
     )
     return response.choices[0].message.content
 
@@ -37,7 +38,7 @@ def optimize_for_seo(article, topic):
     {article}
     """
     response = client.chat.completions.create(
-        model="gpt-4o-mini", messages=[{"role": "user", "content": prompt}]
+        model="gpt-5.2", messages=[{"role": "user", "content": prompt}]
     )
 
     content = response.choices[0].message.content.strip()
@@ -60,4 +61,6 @@ def optimize_for_seo(article, topic):
         print(f"Error parsing JSON response: {e}")
         print(f"Raw content: {content[:200]}...")
         # Return fallback values
-        return ["SEO", "article", topic, "content", "guide"], article.split("\n\n")[0] if article else ""
+        return ["SEO", "article", topic, "content", "guide"], (
+            article.split("\n\n")[0] if article else ""
+        )

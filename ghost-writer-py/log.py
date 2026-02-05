@@ -1,6 +1,7 @@
 """
 Logs generated article metadata to a Google Sheets spreadsheet.
 """
+
 import gspread
 from google.oauth2.service_account import Credentials
 

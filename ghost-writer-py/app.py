@@ -1,10 +1,9 @@
 """
 Flask web application that orchestrates automated article generation workflow.
 """
-from flask import Flask
 
+from flask import Flask
 from generator import generate_article, optimize_for_seo
-from log import log_article
 from publisher import publish_as_markdown
 from trends import get_trending_topics
 
@@ -50,7 +49,10 @@ def run_automation():
         print(f"DEBUG: Published {filename}")
         # log_article(topic, keywords)  # Commented out - Google Sheets logging disabled
 
-    return f"✅ Articles generated and published as Markdown files!<br><br>Generated files:<br>" + "<br>".join(generated_files)
+    return (
+        "✅ Articles generated and published as Markdown files!<br><br>Generated files:<br>"
+        + "<br>".join(generated_files)
+    )
 
 
 if __name__ == "__main__":

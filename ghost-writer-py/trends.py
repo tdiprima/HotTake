@@ -1,6 +1,7 @@
 """
 Scrapes Google Trends to retrieve trending topics for article generation.
 """
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -15,8 +16,9 @@ def get_trending_topics():
     try:
         # Try using pytrends if available
         from pytrends.request import TrendReq
-        pytrends = TrendReq(hl='en-US', tz=360)
-        trending_searches = pytrends.trending_searches(pn='united_states')
+
+        pytrends = TrendReq(hl="en-US", tz=360)
+        trending_searches = pytrends.trending_searches(pn="united_states")
         topics = trending_searches[0].tolist()[:5]
         if topics:
             return topics
@@ -43,5 +45,5 @@ def get_trending_topics():
         "Climate Change Solutions",
         "Remote Work Trends",
         "Sustainable Energy",
-        "Digital Privacy"
+        "Digital Privacy",
     ]

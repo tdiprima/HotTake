@@ -1,6 +1,7 @@
 """
 Schedules daily automated article generation at 09:00 AM.
 """
+
 import time
 
 import schedule
