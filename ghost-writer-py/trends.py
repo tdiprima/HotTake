@@ -30,7 +30,7 @@ def get_trending_topics():
     # Fallback: Try web scraping (likely won't work due to JS rendering)
     try:
         url = "https://trends.google.com/trends/trendingsearches/daily?geo=US"
-        html = requests.get(url).text
+        html = requests.get(url, timeout=10).text
         soup = BeautifulSoup(html, "html.parser")
         topics = [t.text.strip() for t in soup.select(".details-wrapper .title")]
         if topics:
