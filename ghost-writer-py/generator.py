@@ -3,9 +3,12 @@ Generates SEO-optimized articles using OpenAI's API.
 """
 
 import json
+import logging
 import os
 
 from openai import OpenAI
+
+logger = logging.getLogger(__name__)
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
@@ -58,9 +61,8 @@ def optimize_for_seo(article, topic):
         optimized_data = json.loads(content)
         return optimized_data["keywords"], optimized_data["introduction"]
     except json.JSONDecodeError as e:
-        print(f"Error parsing JSON response: {e}")
-        print(f"Raw content: {content[:200]}...")
-        # Return fallback values
+        logger.error("Error parsing JSON response: %s", e)
+        logger.error("Raw content: %s...", content[:200])
         return ["SEO", "article", topic, "content", "guide"], (
             article.split("\n\n")[0] if article else ""
         )
