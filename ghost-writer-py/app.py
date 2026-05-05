@@ -26,6 +26,7 @@ def index():
     <form action="/run" method="get">
         <button type="submit" style="padding: 10px 20px; font-size: 16px;">Generate Articles</button>
     </form>
+    <p>This could take up to 5 minutes. Go get a coffee. ☕️</p>
     """
 
 
