@@ -4,13 +4,13 @@ An automated content pipeline that generates SEO-optimized articles from trendin
 
 ## Writing Content Is a Grind
 
-Keeping a blog alive means researching trends, writing drafts, optimizing for search engines, and publishing consistently. Each article demands the same cycle: find a topic, structure an outline, write 1500 words, sprinkle in keywords, and format for the web. Miss a day and your momentum dies.
+Keeping a blog alive means researching trends, writing drafts, optimizing for search engines, and publishing consistently. Each article demands the same cycle: find a topic, structure an outline, write # words, sprinkle in keywords, and format for the web. Miss a day and your momentum dies.
 
 ## Let the Pipeline Handle It
 
 Ghost Writer automates the full loop. It pulls trending topics from Google Trends, generates long-form articles via a local Ollama model, rewrites introductions with targeted SEO keywords, and saves publish-ready Markdown files. Optionally, it logs article metadata to Google Sheets for tracking output over time.
 
-The system runs on-demand from the command line or unattended on a daily schedule.
+The system runs on-demand from the command line.
 
 ## What You Get
 
@@ -30,7 +30,7 @@ models can now detect conditions earlier and personalize treatment plans...
 ...
 ```
 
-Each article includes a rewritten SEO introduction, 10 structured sections, and a call to action — ready to publish.
+Each article includes a rewritten SEO introduction, structured sections, and a call to action — ready to publish.
 
 ## Usage
 
@@ -75,12 +75,6 @@ cd ghost-writer-py
 python main.py
 ```
 
-**Scheduled mode (daily at 09:00):**
-
-```bash
-python schedule.py
-```
-
 ### Project Structure
 
 ```
@@ -89,8 +83,7 @@ ghost-writer-py/
 ├── generator.py    # Article generation and SEO optimization via Ollama
 ├── trends.py       # Fetches trending topics from Google Trends
 ├── publisher.py    # Writes articles to Markdown files
-├── log.py          # Optional Google Sheets logging
-└── schedule.py     # Daily scheduler entry point
+└── log.py          # Optional Google Sheets logging
 ```
 
 ## License
