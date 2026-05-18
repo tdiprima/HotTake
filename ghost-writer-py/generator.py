@@ -15,18 +15,21 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def generate_article(topic):
     prompt = f"""
-    Write a 1500-word SEO-optimized article about "{topic}".
+    Write a 600-word SEO-optimized article about "{topic}".
     Include:
     - catchy introduction
-    - 10 clear headings with explanations
+    - clear headings with explanations
     - engaging examples
     - conclude with a call to action
     Use a conversational tone like Medium or Dev.to.
+    Make it sound interesting.
+    Write like a human.
+
     Format using Markdown: use ## for headings (do not include a # title at the top).
     """
 
     response = client.chat.completions.create(
-        model="gpt-5.2", messages=[{"role": "user", "content": prompt}]
+        model="gpt-5.5", messages=[{"role": "user", "content": prompt}]
     )
     return response.choices[0].message.content
 
