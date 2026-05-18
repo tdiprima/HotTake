@@ -1,5 +1,5 @@
 """
-Generates SEO-optimized articles using OpenAI's API.
+Generates SEO-optimized articles using a local Ollama model.
 """
 
 import json
@@ -10,7 +10,10 @@ from openai import OpenAI
 
 logger = logging.getLogger(__name__)
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma4:latest")
+
+client = OpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
 
 
 def generate_article(topic):
@@ -29,7 +32,7 @@ def generate_article(topic):
     """
 
     response = client.chat.completions.create(
-        model="gpt-5.5", messages=[{"role": "user", "content": prompt}]
+        model=OLLAMA_MODEL, messages=[{"role": "user", "content": prompt}]
     )
     return response.choices[0].message.content
 
@@ -44,7 +47,7 @@ def optimize_for_seo(article, topic):
     {article}
     """
     response = client.chat.completions.create(
-        model="gpt-5.2", messages=[{"role": "user", "content": prompt}]
+        model=OLLAMA_MODEL, messages=[{"role": "user", "content": prompt}]
     )
 
     content = response.choices[0].message.content.strip()
