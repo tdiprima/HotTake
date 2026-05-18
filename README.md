@@ -10,7 +10,7 @@ Keeping a blog alive means researching trends, writing drafts, optimizing for se
 
 Ghost Writer automates the full loop. It pulls trending topics from Google Trends, generates long-form articles via OpenAI's API, rewrites introductions with targeted SEO keywords, and saves publish-ready Markdown files. Optionally, it logs article metadata to Google Sheets for tracking output over time.
 
-The system runs on-demand through a Flask web interface or unattended on a daily schedule.
+The system runs on-demand from the command line or unattended on a daily schedule.
 
 ## What You Get
 
@@ -63,14 +63,10 @@ Then place your Google service account credentials at `creds.json` (see `creds.j
 
 ### Run
 
-**Web interface:**
-
 ```bash
 cd ghost-writer-py
-python app.py
+python main.py
 ```
-
-Open `http://localhost:5000` and click Generate Articles.
 
 **Scheduled mode (daily at 09:00):**
 
@@ -82,7 +78,7 @@ python schedule.py
 
 ```
 ghost-writer-py/
-├── app.py          # Flask app, orchestrates the pipeline
+├── main.py         # Entry point, orchestrates the pipeline
 ├── generator.py    # Article generation and SEO optimization via OpenAI
 ├── trends.py       # Fetches trending topics from Google Trends
 ├── publisher.py    # Writes articles to Markdown files
