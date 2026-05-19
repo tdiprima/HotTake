@@ -1,4 +1,4 @@
-# HotTake
+# HotTake 🔥 💅
 
 **What's buzzing in tech right now?** HotTake finds out, writes about it, and drops polished Markdown on your desk.
 
