@@ -9,7 +9,7 @@ HotTake pulls trending topics from Hacker News and Dev.to, generates opinionated
 1. **Scans for trends** — Pulls the highest-scoring stories from Hacker News and Dev.to.
 2. **Generates a take** — Sends each topic to a local Ollama model to produce a punchy, conversational article.
 3. **Optimizes for SEO** — Extracts high-traffic keywords and rewrites the introduction to rank.
-4. **Publishes** — Saves each article as a clean Markdown file, ready for your blog or CMS.
+4. **Publishes** — Saves each article as a clean Markdown file. 
 
 ## Quick Start
 
