@@ -1,7 +1,7 @@
 [project]
-name = "ghost-writer-py"
-version = "0.1.3"
-description = "Ghostwriter"
+name = "hottake"
+version = "1.0.0"
+description = "Grabs what's trending in tech and turns it into opinionated, SEO-optimized articles."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [

@@ -1,93 +1,57 @@
-# Ghost Writer 🖋️ 👻
+# HotTake
 
-An automated content pipeline that generates SEO-optimized articles from trending topics using a local Ollama model and publishes them as Markdown.
+**What's buzzing in tech right now?** HotTake finds out, writes about it, and drops polished Markdown on your desk.
 
-## Writing Content Is a Grind
+HotTake pulls trending topics from Hacker News and Dev.to, generates opinionated, SEO-optimized articles using a local LLM (via Ollama), and publishes them as ready-to-post Markdown files.
 
-Keeping a blog alive means researching trends, writing drafts, optimizing for search engines, and publishing consistently. Each article demands the same cycle: find a topic, structure an outline, write # words, sprinkle in keywords, and format for the web. Miss a day and your momentum dies.
+## How It Works
 
-## Let the Pipeline Handle It
+1. **Scans for trends** — Pulls the highest-scoring stories from Hacker News and Dev.to.
+2. **Generates a take** — Sends each topic to a local Ollama model to produce a punchy, conversational article.
+3. **Optimizes for SEO** — Extracts high-traffic keywords and rewrites the introduction to rank.
+4. **Publishes** — Saves each article as a clean Markdown file, ready for your blog or CMS.
 
-Ghost Writer automates the full loop. It pulls trending topics from Google Trends, generates long-form articles via a local Ollama model, rewrites introductions with targeted SEO keywords, and saves publish-ready Markdown files. Optionally, it logs article metadata to Google Sheets for tracking output over time.
-
-The system runs on-demand from the command line.
-
-## What You Get
-
-Given the trending topic "Artificial Intelligence in Healthcare", Ghost Writer produces:
-
-```markdown
-# Artificial Intelligence in Healthcare
-
-AI is transforming diagnostics, drug discovery, and patient care at an
-unprecedented pace. Healthcare professionals leveraging machine learning
-models can now detect conditions earlier and personalize treatment plans...
-
-## How AI Is Revolutionizing Diagnostics
-...
-
-## The Role of Machine Learning in Drug Discovery
-...
-```
-
-Each article includes a rewritten SEO introduction, structured sections, and a call to action — ready to publish.
-
-## Usage
+## Quick Start
 
 ### Prerequisites
 
 - Python 3.10+
-- [Ollama](https://ollama.com) running locally with `gemma4:latest` pulled
-
-```bash
-ollama pull gemma4:latest
-```
+- [Ollama](https://ollama.com/) running locally with a model pulled (default: `gemma4:latest`)
 
 ### Install
 
 ```bash
-git clone https://github.com/tdiprima/ghost-writer-py.git
-cd ghost-writer-py
-pip install .
+uv sync
 ```
-
-### Configure
-
-Ollama runs locally — no API key needed. Override defaults via env vars if needed:
-
-```bash
-export OLLAMA_BASE_URL="http://localhost:11434/v1"  # default
-export OLLAMA_MODEL="gemma4:latest"                  # default
-```
-
-For Google Sheets logging (optional):
-
-```bash
-export ENABLE_SHEETS_LOGGING="true"
-```
-
-Then place your Google service account credentials at `creds.json` (see `creds.json.example`) and share a spreadsheet named "Blog Stats" with the service account email.
 
 ### Run
 
 ```bash
-cd ghost-writer-py
+cd hottake
 python main.py
 ```
 
-### Project Structure
+Articles land in the current directory as `.md` files.
+
+### Configuration
+
+| Variable | Default | Description |
+|---|---|---|
+| `OLLAMA_BASE_URL` | `http://localhost:11434/v1` | Ollama API endpoint |
+| `OLLAMA_MODEL` | `gemma4:latest` | Model to use for generation |
+| `ENABLE_SHEETS_LOGGING` | `false` | Log article metadata to Google Sheets |
+
+## Project Structure
 
 ```
-ghost-writer-py/
-├── main.py         # Entry point, orchestrates the pipeline
-├── generator.py    # Article generation and SEO optimization via Ollama
-├── trends.py       # Fetches trending topics from Google Trends
-├── publisher.py    # Writes articles to Markdown files
-└── log.py          # Optional Google Sheets logging
+hottake/
+  main.py        # Orchestration — fetch, generate, publish
+  trends.py      # Topic discovery from Hacker News and Dev.to
+  generator.py   # Article generation and SEO optimization via Ollama
+  publisher.py   # Markdown file output
+  log.py         # Optional Google Sheets logging
 ```
 
 ## License
 
 [MIT](LICENSE)
-
-<br>

@@ -1,5 +1,5 @@
 """
-Orchestrates automated article generation workflow.
+HotTake — grabs trending topics and turns them into articles.
 Run: python main.py
 """
 
