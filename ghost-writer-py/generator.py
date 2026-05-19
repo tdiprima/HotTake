@@ -17,19 +17,39 @@ client = OpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
 
 
 def generate_article(topic):
-    prompt = f"""
-    Write a 600-word SEO-optimized article about "{topic}".
-    Include:
-    - catchy introduction
-    - clear headings with explanations
-    - engaging examples
-    - conclude with a call to action
-    Use a conversational tone like Medium or Dev.to.
-    Make it sound interesting.
-    Write like a human.
+    # Include:
+    # - catchy introduction
+    # - clear headings with explanations
+    # - engaging examples
+    # - conclude with a call to action
+    # Use a conversational tone like Medium or Dev.to.
+    # Make it sound interesting.
+    # Write like a human.
 
-    Format using Markdown: use ## for headings (do not include a # title at the top).
+    prompt = f"""
+    Write a 600-word SEO-optimized article (and especially an SEO-optimized title) about "{topic}".
+
+    Style and voice:
+    - Conversational, direct, slightly cynical. Sound like a smart person
+      explaining something informally, not a corporate blog.
+    - Call out BS and corporate spin directly. Mock sanitized language
+      by quoting it then countering with what it actually means.
+    - Short punchy paragraphs. One to three sentences max per paragraph.
+    - Use sentence fragments deliberately for emphasis. "Not because of
+      passwords. Because of context."
+    - Stack short phrases on separate lines instead of bullet lists.
+      Like this: "Search history. Watch history. Download logs. Timestamps."
+    - Subheadings should be opinionated or editorial, not generic SEO labels.
+      Example: "The 'we weren't hacked' defense" not "Understanding Data Breaches".
+    - Use second person ("you") mixed with broader observations.
+    - Ground every point with a concrete example or real consequence.
+      No vague claims without showing why it matters.
+    - Build tension with short fragments, then deliver the punchline.
+    - End with a bigger-picture takeaway, not a generic call to action.
+
+    Format using Markdown: use ## for headings.
     """
+    #  (do not include a # title at the top)
 
     response = client.chat.completions.create(
         model=OLLAMA_MODEL, messages=[{"role": "user", "content": prompt}]
