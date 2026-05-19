@@ -2,7 +2,7 @@
 
 **What's buzzing in tech right now?** HotTake finds out, writes about it, and drops polished Markdown on your desk.
 
-HotTake pulls trending topics from Hacker News and Dev.to, generates opinionated, SEO-optimized articles using a local LLM (via Ollama), and publishes them as ready-to-post Markdown files.
+HotTake pulls trending topics from Hacker News and Dev.to, generates opinionated, SEO-optimized articles using a local LLM (via Ollama), and presents them to you as Markdown files.
 
 ## How It Works
 
