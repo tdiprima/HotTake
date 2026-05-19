@@ -32,6 +32,7 @@ def generate_article(topic):
     Style and voice:
     - Conversational, direct, slightly cynical. Sound like a smart person
       explaining something informally, not a corporate blog.
+    - Make it funny, but not cringe.
     - Call out BS and corporate spin directly. Mock sanitized language
       by quoting it then countering with what it actually means.
     - Short punchy paragraphs. One to three sentences max per paragraph.
